@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fishicon.png">
+  <link rel="icon" type="image/png" href="/img/fishicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="pluto">
+  <meta name="keywords" content="">
+  <title>6.15至6.24做题记录 - pluto</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/darcula.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="pluto" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>52Hz的小七不二</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/fishback.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-24 15:26">
+      June 24, 2020 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      44
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：June 24, 2020 pm
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h1 id="6-15至6-24做题记录"><a href="#6-15至6-24做题记录" class="headerlink" title="6.15至6.24做题记录"></a>6.15至6.24做题记录</h1><h3 id="树的子结构"><a href="#树的子结构" class="headerlink" title="树的子结构"></a><a href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/" target="_blank" rel="noopener">树的子结构</a></h3><p>二叉树的递归问题最重要的就是分析好递归的终止条件，题解中recur函数判断以A为根节点的树是否包含B树，也就是说如果A，B节点值不等则只有可能是A的左子树或右子树包含B，如果节点值相等就继续向下判断——A的左子树包含B的左子树，A右包含B右，直到B为空。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Definition for a binary tree node.</span>
+<span class="hljs-comment"> * public class TreeNode &#123;</span>
+<span class="hljs-comment"> *     int val;</span>
+<span class="hljs-comment"> *     TreeNode left;</span>
+<span class="hljs-comment"> *     TreeNode right;</span>
+<span class="hljs-comment"> *     TreeNode(int x) &#123; val = x; &#125;</span>
+<span class="hljs-comment"> * &#125;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSubStructure</span><span class="hljs-params">(TreeNode A, TreeNode B)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> (A!=<span class="hljs-keyword">null</span> &amp;&amp; B!=<span class="hljs-keyword">null</span> &amp;&amp; (judge(A,B) || isSubStructure(A.left,B) || 
+                isSubStructure(A.right,B)));
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">judge</span><span class="hljs-params">(TreeNode a, TreeNode b)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(b==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span>(a==<span class="hljs-keyword">null</span> || a.val!=b.val) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">return</span> judge(a.left,b.left) &amp;&amp; judge(a.right,b.right);
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="包含min函数的栈"><a href="#包含min函数的栈" class="headerlink" title="包含min函数的栈"></a><a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/" target="_blank" rel="noopener">包含min函数的栈</a></h3><p>这道题的题解是用辅助栈，数据栈存要求的数据，辅助栈存最小值，只有比栈顶小时才入栈(等于时也要入栈，因为出栈判断是只要值相等就出栈)，我的思路是自己建立链表节点，节点中用pre_min记录在它之前的有最小值的节点是哪个，如果他自己最小就指向他自己，这样出栈后只要查找当前栈顶的pre_min指向就可以了</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MinStack</span> </span>&#123;
+    <span class="hljs-comment">/** initialize your data structure here. */</span>
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">stack_node</span> </span>&#123;
+        <span class="hljs-keyword">int</span> val;
+        stack_node pre;
+        stack_node next;
+        stack_node pre_min;
+        stack_node(<span class="hljs-keyword">int</span> x) &#123;val=x;&#125;
+    &#125;
+
+    <span class="hljs-keyword">int</span> min=Integer.MAX_VALUE;
+    stack_node bottom;
+    stack_node cur;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MinStack</span><span class="hljs-params">()</span> </span>&#123;
+        bottom = <span class="hljs-keyword">new</span> stack_node(Integer.MAX_VALUE);
+        cur=bottom;
+        cur.pre_min=cur;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+        stack_node push = <span class="hljs-keyword">new</span> stack_node(x);
+        push.pre=cur;
+        cur.next=push;
+        <span class="hljs-keyword">if</span>(x&lt;min) &#123;
+            min = x;
+            push.pre_min=push;
+        &#125;
+        <span class="hljs-keyword">else</span>
+            push.pre_min=cur.pre_min;
+        cur=push;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;
+        cur=cur.pre;
+        min=cur.pre_min.val;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> cur.val;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> min;
+    &#125;
+&#125;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Your MinStack object will be instantiated and called as such:</span>
+<span class="hljs-comment"> * MinStack obj = new MinStack();</span>
+<span class="hljs-comment"> * obj.push(x);</span>
+<span class="hljs-comment"> * obj.pop();</span>
+<span class="hljs-comment"> * int param_3 = obj.top();</span>
+<span class="hljs-comment"> * int param_4 = obj.min();</span>
+<span class="hljs-comment"> */</span></code></pre></div>
+
+
+
+<h3 id="二叉树的序列化和反序列化"><a href="#二叉树的序列化和反序列化" class="headerlink" title="二叉树的序列化和反序列化"></a><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">二叉树的序列化和反序列化</a></h3><p>题目要求是“不要使用类的成员 / 全局 / 静态变量来存储状态，你的序列化和反序列化算法应该是无状态的。”这道题的序列化不难，最好选择先序遍历这样重构树的时候比较方便，递归遍历树然后把值一个个加到string里，注意空节点的录入以及节点之间的分割。</p>
+<p>反序列化时用刚才的分割字符转为string数组，再转为list，将list作为参数传入递归，每次用掉一个节点就remove一个节点，然后将list传入递归左子树，然后是右子树。当list的首位给的值代表null就说明这个小子树构建完了。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Definition for a binary tree node.</span>
+<span class="hljs-comment"> * public class TreeNode &#123;</span>
+<span class="hljs-comment"> *     int val;</span>
+<span class="hljs-comment"> *     TreeNode left;</span>
+<span class="hljs-comment"> *     TreeNode right;</span>
+<span class="hljs-comment"> *     TreeNode(int x) &#123; val = x; &#125;</span>
+<span class="hljs-comment"> * &#125;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Codec</span> </span>&#123;
+
+    <span class="hljs-comment">// Encodes a tree to a single string.</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">my_serialize</span><span class="hljs-params">(TreeNode root, String str)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> str+=<span class="hljs-string">"None,"</span>;
+        str+=String.valueOf(root.val)+<span class="hljs-string">","</span>;
+        str=my_serialize(root.left,str);
+        str=my_serialize(root.right,str);
+        <span class="hljs-keyword">return</span> str;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">serialize</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> my_serialize(root,<span class="hljs-string">""</span>);
+    &#125;
+
+    <span class="hljs-comment">// Decodes your encoded data to tree.</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">my_deserialize</span><span class="hljs-params">(List&lt;String&gt; data_list)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(data_list.get(<span class="hljs-number">0</span>).equals(<span class="hljs-string">"None"</span>)) &#123;
+            data_list.remove(<span class="hljs-number">0</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        &#125;
+        TreeNode root=<span class="hljs-keyword">new</span> TreeNode(Integer.valueOf(data_list.get(<span class="hljs-number">0</span>)));
+        data_list.remove(<span class="hljs-number">0</span>);
+        root.left=my_deserialize(data_list);
+        root.right=my_deserialize(data_list);
+        <span class="hljs-keyword">return</span> root;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">deserialize</span><span class="hljs-params">(String data)</span> </span>&#123;
+        String[] sp_data=data.split(<span class="hljs-string">","</span>);
+        List&lt;String&gt; data_list=<span class="hljs-keyword">new</span> LinkedList&lt;&gt;(Arrays.asList(sp_data));
+        <span class="hljs-keyword">return</span> my_deserialize(data_list);
+    &#125;
+&#125;
+
+<span class="hljs-comment">// Your Codec object will be instantiated and called as such:</span>
+<span class="hljs-comment">// Codec codec = new Codec();</span>
+<span class="hljs-comment">// codec.deserialize(codec.serialize(root));</span></code></pre></div>
+
+
+
+<h3 id="栈的压入、弹出序列"><a href="#栈的压入、弹出序列" class="headerlink" title="栈的压入、弹出序列"></a><a href="https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/" target="_blank" rel="noopener">栈的压入、弹出序列</a></h3><p>直接建栈模拟就行，遇到错就返回false，这居然是中等题…..</p>
+<h3 id="最佳观光组合"><a href="#最佳观光组合" class="headerlink" title="最佳观光组合"></a><a href="https://leetcode-cn.com/problems/best-sightseeing-pair/" target="_blank" rel="noopener">最佳观光组合</a></h3><p>一道动规题，遍历一次，记录每个点和它之前的某个点的评分最大值，仔细观察可发现，若i与j组合最大，到j的下一个点k时，要么k与j组合更大，要么k与i组合更大，不可能是k之前的其他元素了，因为如果有m能使k与m的组合更大的话，那么j当初也应该与m组合而不是与i组合，其实光看计算公式就是这个道理：A[i]+i+A[j]-j，对点j来说，A[j]-j是固定值，只要找到j之前的一个i使A[i]+i最大就行，而这样的i找到了就是固定的不会变</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxScoreSightseeingPair</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] A)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> cur,pre=A[<span class="hljs-number">0</span>],max=A[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;A.length;i++) &#123;
+            cur=Math.max(A[i]+A[i-<span class="hljs-number">1</span>]-<span class="hljs-number">1</span>,A[i]+pre-A[i-<span class="hljs-number">1</span>]-<span class="hljs-number">1</span>);
+            <span class="hljs-keyword">if</span>(cur&gt;max) max=cur;
+            pre=cur;
+        &#125;
+        <span class="hljs-keyword">return</span> max;
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="从上到下打印二叉树3"><a href="#从上到下打印二叉树3" class="headerlink" title="从上到下打印二叉树3"></a><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/" target="_blank" rel="noopener">从上到下打印二叉树3</a></h3><p>与这个系列的前两题不同在于要“之”字输出，也就是要考虑层数</p>
+<p>我的代码复杂再居然又建了一个栈，其实一个队列就可以，因为java里那个队列是双端队列正反插都可以</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;
+        Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        <span class="hljs-keyword">if</span>(root != <span class="hljs-keyword">null</span>) queue.add(root);
+        <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;
+            LinkedList&lt;Integer&gt; tmp = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = queue.size(); i &gt; <span class="hljs-number">0</span>; i--) &#123;
+                TreeNode node = queue.poll();
+                <span class="hljs-keyword">if</span>(res.size() % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) tmp.addLast(node.val); <span class="hljs-comment">// 偶数层 -&gt; 队列头部</span>
+                <span class="hljs-keyword">else</span> tmp.addFirst(node.val); <span class="hljs-comment">// 奇数层 -&gt; 队列尾部</span>
+                <span class="hljs-keyword">if</span>(node.left != <span class="hljs-keyword">null</span>) queue.add(node.left);
+                <span class="hljs-keyword">if</span>(node.right != <span class="hljs-keyword">null</span>) queue.add(node.right);
+            &#125;
+            res.add(tmp);
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="从先序遍历还原二叉树"><a href="#从先序遍历还原二叉树" class="headerlink" title="从先序遍历还原二叉树"></a><a href="https://leetcode-cn.com/problems/recover-a-tree-from-preorder-traversal/" target="_blank" rel="noopener">从先序遍历还原二叉树</a></h3><p>题解用栈保存要回溯的状态，参数是一个字符串，作为S之后出现的T字符，它要么是S的左子树的根节点，要么就是S的某个祖先的右子树的根节点，这要看T前有几个“-”来判断，定义“-”的个数是level，则当level与栈的大小+1相等时就表明T就是S的左子树，否则栈内元素不停出栈直到满足条件，每次新建节点最后都入栈。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">recoverFromPreorder</span><span class="hljs-params">(String S)</span> </span>&#123;
+        Deque&lt;TreeNode&gt; path = <span class="hljs-keyword">new</span> LinkedList&lt;TreeNode&gt;();
+        <span class="hljs-keyword">int</span> pos = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span> (pos &lt; S.length()) &#123;
+            <span class="hljs-keyword">int</span> level = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (S.charAt(pos) == <span class="hljs-string">'-'</span>) &#123;
+                ++level;
+                ++pos;
+            &#125;
+            <span class="hljs-keyword">int</span> value = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (pos &lt; S.length() &amp;&amp; Character.isDigit(S.charAt(pos))) &#123;
+                value = value * <span class="hljs-number">10</span> + (S.charAt(pos) - <span class="hljs-string">'0'</span>);
+                ++pos;
+            &#125;
+            TreeNode node = <span class="hljs-keyword">new</span> TreeNode(value);
+            <span class="hljs-keyword">if</span> (level == path.size()) &#123;
+                <span class="hljs-keyword">if</span> (!path.isEmpty()) &#123;
+                    path.peek().left = node;
+                &#125;
+            &#125;
+            <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-keyword">while</span> (level != path.size()) &#123;
+                    path.pop();
+                &#125;
+                path.peek().right = node;
+            &#125;
+            path.push(node);
+        &#125;
+        <span class="hljs-keyword">while</span> (path.size() &gt; <span class="hljs-number">1</span>) &#123;
+            path.pop();
+        &#125;
+        <span class="hljs-keyword">return</span> path.peek();
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="二叉搜索树的后序遍历序列"><a href="#二叉搜索树的后序遍历序列" class="headerlink" title="二叉搜索树的后序遍历序列"></a><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/" target="_blank" rel="noopener">二叉搜索树的后序遍历序列</a></h3><p>后序遍历，所以数组末尾是根节点，作为分割点，从前往后找属于左子树和右子树的部分，看是否满足规则，把分好的索引放入递归处理</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">verifyPostorder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] postorder)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> recur(postorder,<span class="hljs-number">0</span>,postorder.length-<span class="hljs-number">1</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">recur</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] postorder, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(i&gt;=j) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">int</span> split=i;
+        <span class="hljs-keyword">while</span>(postorder[split]&lt;postorder[j]) split++;
+        <span class="hljs-keyword">int</span> max=split;
+        <span class="hljs-keyword">while</span>(postorder[max]&gt;postorder[j]) max++;
+        <span class="hljs-keyword">return</span> max==j &amp;&amp; recur(postorder,i,split-<span class="hljs-number">1</span>) &amp;&amp; recur(postorder,split,max-<span class="hljs-number">1</span>);
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="二叉树中和为某一值的路径"><a href="#二叉树中和为某一值的路径" class="headerlink" title="二叉树中和为某一值的路径"></a><a href="https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/" target="_blank" rel="noopener">二叉树中和为某一值的路径</a></h3><p>递归判断，用一个栈保存已经走过的路径，如果路不通将栈顶remove，如示例中的树，传入参数可以是左子树，tar为22-5=17，和右子树，tar也是17，找到当前节点无左右子树且等于tar，加入path，并将path拷贝一份到res中，继续递归</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Definition for a binary tree node.</span>
+<span class="hljs-comment"> * public class TreeNode &#123;</span>
+<span class="hljs-comment"> *     int val;</span>
+<span class="hljs-comment"> *     TreeNode left;</span>
+<span class="hljs-comment"> *     TreeNode right;</span>
+<span class="hljs-comment"> *     TreeNode(int x) &#123; val = x; &#125;</span>
+<span class="hljs-comment"> * &#125;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    LinkedList&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    LinkedList&lt;Integer&gt; path = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;(); 
+    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="hljs-keyword">int</span> sum) &#123;
+        recur(root, sum);
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">recur</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> tar)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+        path.add(root.val);
+        tar -= root.val;
+        <span class="hljs-keyword">if</span>(tar == <span class="hljs-number">0</span> &amp;&amp; root.left == <span class="hljs-keyword">null</span> &amp;&amp; root.right == <span class="hljs-keyword">null</span>)
+            res.add(<span class="hljs-keyword">new</span> LinkedList(path));
+        recur(root.left, tar);
+        recur(root.right, tar);
+        path.removeLast();
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="二叉树中的最大路径和"><a href="#二叉树中的最大路径和" class="headerlink" title="二叉树中的最大路径和"></a><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">二叉树中的最大路径和</a></h3><p>这题我做的太复杂了，递归很多导致时间复杂度高，实际上当遇到计算自己子树的值为负数时，直接将这个子树的值设为0就可以</p>
+<p>我的代码里recurMaxEdge找到当前节点能连接的最大的一条边，recurMaxRoot找到通过当前节点路径的最大值，最后findmax递归遍历</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Definition for a binary tree node.</span>
+<span class="hljs-comment"> * public class TreeNode &#123;</span>
+<span class="hljs-comment"> *     int val;</span>
+<span class="hljs-comment"> *     TreeNode left;</span>
+<span class="hljs-comment"> *     TreeNode right;</span>
+<span class="hljs-comment"> *     TreeNode(int x) &#123; val = x; &#125;</span>
+<span class="hljs-comment"> * &#125;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span> max=Integer.MIN_VALUE;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        findmax(root);
+        <span class="hljs-keyword">return</span> max;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">recurMaxEdge</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> Math.max(root.val,(root.val+Math.max(recurMaxEdge(root.left),recurMaxEdge(root.right))));
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">recurMaxRoot</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> a=root.val,b=recurMaxEdge(root.left),c=recurMaxEdge(root.right);
+        <span class="hljs-keyword">return</span> Math.max(a,Math.max(Math.max(a+b,a+c),a+b+c));
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">findmax</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">int</span> cur=recurMaxRoot(root);
+        <span class="hljs-keyword">if</span>(max&lt;cur) max=cur;
+        findmax(root.left);
+        findmax(root.right);
+    &#125;
+&#125;</code></pre></div>
+
+<p>复杂的原因就是不确定一个节点加上它左子树节点给它的那个“最大值”是正是负，所以加了很多没用的判断和递归，实际上对每个节点提供最大值计算时如果结果是负数，那它就是0，因为没人会加上负数</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">int</span> maxSum = Integer.MIN_VALUE;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+        maxGain(root);
+        <span class="hljs-keyword">return</span> maxSum;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxGain</span><span class="hljs-params">(TreeNode node)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (node == <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+        
+        <span class="hljs-comment">// 递归计算左右子节点的最大贡献值</span>
+        <span class="hljs-comment">// 只有在最大贡献值大于 0 时，才会选取对应子节点</span>
+        <span class="hljs-keyword">int</span> leftGain = Math.max(maxGain(node.left), <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">int</span> rightGain = Math.max(maxGain(node.right), <span class="hljs-number">0</span>);
+
+        <span class="hljs-comment">// 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值</span>
+        <span class="hljs-keyword">int</span> priceNewpath = node.val + leftGain + rightGain;
+
+        <span class="hljs-comment">// 更新答案</span>
+        maxSum = Math.max(maxSum, priceNewpath);
+
+        <span class="hljs-comment">// 返回节点的最大贡献值</span>
+        <span class="hljs-keyword">return</span> node.val + Math.max(leftGain, rightGain);
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="复杂链表的复制"><a href="#复杂链表的复制" class="headerlink" title="复杂链表的复制"></a><a href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/" target="_blank" rel="noopener">复杂链表的复制</a></h3><p>这题很秀，用hashmap做可以，也可以直接复制！！深拷贝和浅拷贝的区别就是这个</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*</span>
+<span class="hljs-comment">// Definition for a Node.</span>
+<span class="hljs-comment">class Node &#123;</span>
+<span class="hljs-comment">    int val;</span>
+<span class="hljs-comment">    Node next;</span>
+<span class="hljs-comment">    Node random;</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">    public Node(int val) &#123;</span>
+<span class="hljs-comment">        this.val = val;</span>
+<span class="hljs-comment">        this.next = null;</span>
+<span class="hljs-comment">        this.random = null;</span>
+<span class="hljs-comment">    &#125;</span>
+<span class="hljs-comment">&#125;</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Node <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node head)</span> </span>&#123;
+        HashMap&lt;Node,Node&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;(); <span class="hljs-comment">//创建HashMap集合</span>
+        Node cur=head;
+        <span class="hljs-comment">//复制结点值</span>
+        <span class="hljs-keyword">while</span>(cur!=<span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-comment">//存储put:&lt;key,value1&gt;</span>
+            map.put(cur,<span class="hljs-keyword">new</span> Node(cur.val)); <span class="hljs-comment">//顺序遍历，存储老结点和新结点(先存储新创建的结点值)</span>
+            cur=cur.next;
+        &#125;
+        <span class="hljs-comment">//复制结点指向</span>
+        cur = head;
+        <span class="hljs-keyword">while</span>(cur!=<span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-comment">//得到get:&lt;key&gt;.value2,3</span>
+            map.get(cur).next = map.get(cur.next); <span class="hljs-comment">//新结点next指向同旧结点的next指向</span>
+            map.get(cur).random = map.get(cur.random); <span class="hljs-comment">//新结点random指向同旧结点的random指向</span>
+            cur = cur.next;
+        &#125;
+
+        <span class="hljs-comment">//返回复制的链表</span>
+        <span class="hljs-keyword">return</span> map.get(head);
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="最接近的三数之和"><a href="#最接近的三数之和" class="headerlink" title="最接近的三数之和"></a><a href="https://leetcode-cn.com/problems/3sum-closest/" target="_blank" rel="noopener">最接近的三数之和</a></h3><p>和三数之和一个思路</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">threeSumClosest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>&#123;
+        Arrays.sort(nums);
+        <span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>,cur=Integer.MAX_VALUE;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.length;i++) &#123;
+            <span class="hljs-keyword">if</span>(i&gt;<span class="hljs-number">0</span> &amp;&amp; nums[i]==nums[i-<span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;
+            <span class="hljs-keyword">int</span> left=i+<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">int</span> right=nums.length-<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">while</span>(left&lt;right) &#123;
+                <span class="hljs-keyword">int</span> sum=nums[i]+nums[left]+nums[right];
+                <span class="hljs-comment">// while(left&lt;right &amp;&amp; nums[left]==nums[left+1]) left++;</span>
+                <span class="hljs-comment">// while(left&lt;right &amp;&amp; nums[right]==nums[right-1]) right--; </span>
+                <span class="hljs-keyword">if</span>(cur&gt;Math.abs(sum-target)) &#123;
+                    cur=Math.abs(sum-target);
+                    res=sum;
+                &#125;
+                <span class="hljs-keyword">if</span>(sum &lt; target) left++;
+                <span class="hljs-keyword">if</span>(sum &gt; target) right--;
+                <span class="hljs-keyword">if</span>(sum == target) <span class="hljs-keyword">return</span> res;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<h3 id="二叉搜索树与双向链表"><a href="#二叉搜索树与双向链表" class="headerlink" title="二叉搜索树与双向链表"></a><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/" target="_blank" rel="noopener">二叉搜索树与双向链表</a></h3><p>二叉搜索树的中序遍历是递增排列！所以根据这个建立链表</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">/*</span>
+<span class="hljs-comment">// Definition for a Node.</span>
+<span class="hljs-comment">class Node &#123;</span>
+<span class="hljs-comment">    public int val;</span>
+<span class="hljs-comment">    public Node left;</span>
+<span class="hljs-comment">    public Node right;</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">    public Node() &#123;&#125;</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">    public Node(int _val) &#123;</span>
+<span class="hljs-comment">        val = _val;</span>
+<span class="hljs-comment">    &#125;</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">    public Node(int _val,Node _left,Node _right) &#123;</span>
+<span class="hljs-comment">        val = _val;</span>
+<span class="hljs-comment">        left = _left;</span>
+<span class="hljs-comment">        right = _right;</span>
+<span class="hljs-comment">    &#125;</span>
+<span class="hljs-comment">&#125;;</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    Node head,pre;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Node <span class="hljs-title">treeToDoublyList</span><span class="hljs-params">(Node root)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        dfs(root);
+        head.left=pre;
+        pre.right=head;
+        <span class="hljs-keyword">return</span> head;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(Node cur)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(cur==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+        dfs(cur.left);
+        <span class="hljs-keyword">if</span>(pre==<span class="hljs-keyword">null</span>) head=cur;
+        <span class="hljs-keyword">else</span> pre.right=cur;
+        cur.left=pre;
+        pre=cur;
+        dfs(cur.right); 
+    &#125;
+&#125;</code></pre></div>
+
+
+
+<p>最近因为考试，很久都没有记录题目，晚上总结一下前端CSS的一些内容。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Algorithm/">Algorithm</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">每日一题</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/30/JS%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JS中的变量类型与强制转换</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/14/6.10%E8%87%B36.14%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">
+                        <span class="hidden-mobile">6.10至6.14做题记录</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "6.15至6.24做题记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "❡"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
