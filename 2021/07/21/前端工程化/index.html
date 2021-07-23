@@ -194,7 +194,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 22, 2021 pm
+                  本文最后更新于：July 23, 2021 pm
                 
               </p>
             
@@ -365,7 +365,7 @@
 <li>更高复用性</li>
 <li>高可维护性</li>
 </ul>
-<h3 id="引入多个（模块）后出现的问题"><a href="#引入多个（模块）后出现的问题" class="headerlink" title="引入多个（模块）后出现的问题"></a>引入多个<script>（模块）后出现的问题</h3><ul>
+<h3 id="引入多个script（模块）后出现的问题"><a href="#引入多个script（模块）后出现的问题" class="headerlink" title="引入多个script（模块）后出现的问题"></a>引入多个script（模块）后出现的问题</h3><ul>
 <li><p>请求过多</p>
 <p>首先我们要依赖多个模块，那样就会发送多个请求，导致请求过多</p>
 </li>
@@ -461,7 +461,7 @@ b.js<span class="hljs-number">-1</span> <span class="hljs-number">2</span>
 a.js<span class="hljs-number">-3</span> <span class="hljs-number">3</span>
 b.js<span class="hljs-number">-2</span> <span class="hljs-number">3</span></code></pre></div>
 </li>
-<li><p>当使用require命令加载某个模块时，就会运行整个模块的代码，并且用require命令加载同一个模块时，不会再执行该模块，而是取到缓存之中的值。也就是说，CommonJS模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存。<strong>值得注意的是，循环加载</strong>时，属于加载时执行。即脚本代码在require的时候，就会全部执行。一旦出现某个模块被"循环加载"，就只输出已经执行的部分，还未执行的部分不会输出：</p>
+<li><p>当使用require命令加载某个模块时，就会运行整个模块的代码，并且用require命令加载同一个模块时，不会再执行该模块，而是取到缓存之中的值。也就是说，CommonJS模块无论加载多少次，都只会在第一次加载时运行一次，以后再加载，就返回第一次运行的结果，除非手动清除系统缓存。<strong>值得注意的是，循环加载</strong>时，属于加载时执行。即脚本代码在require的时候，就会全部执行。一旦出现某个模块被”循环加载”，就只输出已经执行的部分，还未执行的部分不会输出：</p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// b.js</span>
 exports.done = <span class="hljs-literal">false</span>
 <span class="hljs-keyword">let</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./a.js'</span>)
