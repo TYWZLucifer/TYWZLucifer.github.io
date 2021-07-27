@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fishicon.png">
+  <link rel="icon" type="image/png" href="/img/fishicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="pluto">
+  <meta name="keywords" content="">
+  <title>React基础与一些问题 - pluto</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/darcula.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="pluto" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>52Hz的小七不二</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/fishback.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2021-07-23 17:13">
+      July 23, 2021 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      72
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 27, 2021 pm
+                
+              </p>
+            
+            <article class="markdown-body">
+              <h1 id="React的基础操作与常考的一些问题"><a href="#React的基础操作与常考的一些问题" class="headerlink" title="React的基础操作与常考的一些问题"></a>React的基础操作与常考的一些问题</h1><h2 id="React基础"><a href="#React基础" class="headerlink" title="React基础"></a>React基础</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><ul>
+<li><p>可以通过JS引入来使用react</p>
+</li>
+<li><p>也可以通过脚手架工具例如webpack等来构建</p>
+</li>
+<li><p>使用官方脚手架工具Create-react-app来构建(会直接下好react react-dom react-scripts等包)：</p>
+<p>首先需要安装：</p>
+<div class="hljs"><pre><code class="hljs jsx">npm install create-react-app -g
+create-react-app my-app <span class="hljs-comment">// my-app 为项目名称</span>
+cd my-app <span class="hljs-comment">// 已经构建好这个项目目录了</span></code></pre></div>
+
+</li>
+</ul>
+<p>关于目录下一些文件的说明：</p>
+<p>public/index.html:整个项目的html文件：</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"%PUBLIC_URL%/favicon.ico"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#000000"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">content</span>=<span class="hljs-string">"Web site created using create-react-app"</span></span>
+<span class="hljs-tag">    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>todolist<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"root"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+
+<p>src/index.js 项目的入口文件:</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoList'</span>;
+
+ReactDOM.render(
+  &lt;TodoList /&gt;,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);</code></pre></div>
+
+<p>很明显，它把TodoList这个玩意渲染到了‘root’这个节点上。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>对于React中的组件，就例如这个TodoList，基本架子是这样的：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; Component, Fragment &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoList</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>(props) &#123;
+        <span class="hljs-keyword">super</span>(props);
+        <span class="hljs-keyword">this</span>.state = &#123;
+        	inputVaule: <span class="hljs-string">'hello'</span>,
+        	list[]
+        &#125;
+    &#125;
+    render() &#123; 
+        <span class="hljs-keyword">return</span> ( 
+			&lt;Fragment&gt;
+				&lt;input 
+            		value = &#123;<span class="hljs-keyword">this</span>.state.inputValue&#125;
+					onChange = &#123;<span class="hljs-keyword">this</span>.handleInputChange.bind(<span class="hljs-keyword">this</span>)&#125;
+				/&gt;
+				&lt;ul&gt;&lt;<span class="hljs-regexp">/ul&gt;</span>
+<span class="hljs-regexp">			&lt;/</span>Fragment&gt;
+        );
+    &#125;
+    handleInputChange(e) &#123;
+        <span class="hljs-keyword">this</span>.setState(&#123;
+            inputValue: e.target.value
+        &#125;)
+    &#125;
+&#125;
+ 
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> TodoList;</code></pre></div>
+
+<p>上面代码实现的功能是获取输入框中的值并显示在框里面，这需要组件有一个state保存它的数据，并且这个数据的修改只能通过setState()方法，触发事件后的回调函数需要绑定执行的this为本组件</p>
+<p>button点击后将值push进list的代码不再赘述</p>
+<h4 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h4><p>父组件中ul中的内容：在列表中<code>&lt;TodoItem&gt;</code>为需要渲染的列表项，也就是需要将list的内容放在这里</p>
+<div class="hljs"><pre><code class="hljs javascript">&lt;ul&gt;
+	&#123;
+		<span class="hljs-keyword">this</span>.state.list.map(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;
+			<span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TodoItem</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#123;item&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">TodoItem</span>&gt;</span></span>
+		&#125;)
+	&#125;
+&lt;<span class="hljs-regexp">/ul&gt;</span></code></pre></div>
+
+<p>用content将item传给子组件，TodoItem的结构如下：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+    render() &#123; 
+        <span class="hljs-keyword">return</span> (
+            &lt;div className = <span class="hljs-string">"TodoItem"</span> &gt;&#123;<span class="hljs-keyword">this</span>.props.content&#125;&lt;<span class="hljs-regexp">/div&gt;</span>
+<span class="hljs-regexp">        );</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">&#125;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">export default TodoItem;</span></code></pre></div>
+
+<p>类似上面这样，在props中就已经有content这个东西了</p>
+<h4 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h4><p>实际上是在子组件中点击事件后，需要更改父组件中list的数据，比如删除功能，需要给子组件绑定点击函数，然后回调就是一个函数，而这个函数实际上可以是父组件传递给子组件的一个方法，子组件调用这个方法，传入触发点击的index，函数就能根据index操作父组件中的list，<strong>值得注意的是，父传子函数时记得绑定this</strong></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./TodoItem.css"</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>(props) &#123;
+        <span class="hljs-keyword">super</span>(props);
+        <span class="hljs-keyword">this</span>.handleClick = <span class="hljs-keyword">this</span>.handleClick.bind(<span class="hljs-keyword">this</span>);
+    &#125;
+    render() &#123; 
+        <span class="hljs-keyword">const</span> &#123; content &#125; = <span class="hljs-keyword">this</span>.props;
+        <span class="hljs-keyword">return</span> (
+            &lt;div className = <span class="hljs-string">"TodoItem"</span> onClick = &#123;<span class="hljs-keyword">this</span>.handleClick&#125;&gt;&#123;content&#125;&lt;<span class="hljs-regexp">/div&gt;</span>
+<span class="hljs-regexp">        );</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp">    handleClick() &#123;</span>
+<span class="hljs-regexp">        const &#123; deleteItem, index &#125; = this.props;</span>
+<span class="hljs-regexp">        deleteItem(index);</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp">&#125;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">export default TodoItem;</span></code></pre></div>
+
+<h4 id="组件传值校验"><a href="#组件传值校验" class="headerlink" title="组件传值校验"></a>组件传值校验</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;
+
+TodoItem.propTypes = &#123;
+    content: PropTypes.string.isRequired, <span class="hljs-comment">// 必须项</span>
+    index: PropTypes.number,
+    deleteItem: PropTypes.func
+&#125;
+
+<span class="hljs-comment">// 如果没传content的默认值</span>
+TodoItem.defaultProps = &#123;
+    content: <span class="hljs-string">'undefined'</span>
+&#125;</code></pre></div>
+
+<p><strong><em>注意，state和props的更新都会引起当前组件render函数的重新执行，而且父组件的重新渲染也会引起子组件的重新渲染！</em></strong></p>
+<h4 id="React中的ref"><a href="#React中的ref" class="headerlink" title="React中的ref"></a>React中的ref</h4><p>reference的简写，是一个引用，可以用来操作DOM，例如在父组件的input标签中插入一个ref属性，可以获取到input这个节点，那我们就能用state中的一个变量保存它：</p>
+<div class="hljs"><pre><code class="hljs javascript">&lt;input 
+	value = &#123;<span class="hljs-keyword">this</span>.state.inputValue&#125;
+	onChange = &#123;<span class="hljs-keyword">this</span>.handleInputChange.bind(<span class="hljs-keyword">this</span>)&#125;
+	ref = &#123;(input) =&gt; &#123;<span class="hljs-keyword">this</span>.input = input&#125;&#125;
+/&gt;</code></pre></div>
+
+<p>之后设置state就可以：</p>
+<div class="hljs"><pre><code class="hljs javascript">inputValue: <span class="hljs-keyword">this</span>.input.value</code></pre></div>
+
+<h4 id="React中的setState"><a href="#React中的setState" class="headerlink" title="React中的setState"></a>React中的setState</h4><ul>
+<li><p>setState是异步的，这样可以按批次来更新state，保证不会渲染太多次导致性能问题。</p>
+</li>
+<li><p>setState可以接收一个对象，也就是更新的state</p>
+</li>
+<li><p>setState也可以接收一个或两个函数，第一个函数是这样的：</p>
+<div class="hljs"><pre><code class="hljs javascript">incrementCount() &#123;
+  <span class="hljs-keyword">this</span>.setState(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">// 重要：在更新的时候读取 `state`，而不是 `this.state`。</span>
+    <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">count</span>: state.count + <span class="hljs-number">1</span>&#125;
+  &#125;);
+&#125;</code></pre></div>
+
+<p>这样做可以保证需要用state做计算时用的一定是最新的state。而传入两个函数，则可以理解为是当完成state更新后回调第二个函数，做了一个异步的过程：</p>
+<div class="hljs"><pre><code class="hljs javascript">incrementCount() &#123;
+  <span class="hljs-keyword">this</span>.setState(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">// 重要：在更新的时候读取 `state`，而不是 `this.state`。</span>
+    <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">count</span>: state.count + <span class="hljs-number">1</span>&#125;
+  &#125;, () =&gt; &#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`更新state拉<span class="hljs-subst">$&#123;state.count&#125;</span>`</span>)
+  &#125;);
+&#125;</code></pre></div>
+
+
+
+</li>
+</ul>
+<h2 id="Redux基础"><a href="#Redux基础" class="headerlink" title="Redux基础"></a>Redux基础</h2><h3 id="引入-1"><a href="#引入-1" class="headerlink" title="引入"></a>引入</h3><div class="hljs"><pre><code class="hljs javascript">npm install redux --save</code></pre></div>
+
+<p>新建store目录，store/index.js :</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">const</span> store = createStore();
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store;</code></pre></div>
+
+<p>此时的store，作为“图书馆管理员”，缺少一个本子来辅助它记录各种数据，新建reducer.js，并将它引入store：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> defaultState = &#123;
+    inputValue: <span class="hljs-string">''</span>,
+    list: []
+&#125;
+<span class="hljs-keyword">const</span> reducer = <span class="hljs-function">(<span class="hljs-params">state = defaultState, action</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> new_state = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(state));
+    <span class="hljs-keyword">switch</span> (action.type) &#123;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> state;
+    &#125;
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> reducer;</code></pre></div>
+
+<p>reducer指明了store中应该有inputValue和list两种数据：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> reducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducer'</span>
+<span class="hljs-keyword">const</span> store = createStore(reducer);</code></pre></div>
+
+<p>在组件代码中可以获取值：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xx</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Copmonent</span> </span>&#123;
+	<span class="hljs-keyword">constructor</span>(props) &#123;
+		<span class="hljs-keyword">super</span>(props);
+		<span class="hljs-keyword">this</span>.state = store.getState();
+	&#125;
+&#125;</code></pre></div>
+
+<h3 id="拆分与传值"><a href="#拆分与传值" class="headerlink" title="拆分与传值"></a>拆分与传值</h3><p>actionTypes：导出一些定义好的常量</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> INPUT_VALUE_CHANGE = <span class="hljs-string">'input_value_change'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> INPUT_BUTTON_CLICK = <span class="hljs-string">'input_button_click'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> DELETE_ITEM = <span class="hljs-string">'delete_item'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> INIT_DATA = <span class="hljs-string">'init_data'</span>;</code></pre></div>
+
+<p>actionCreator：在组件中如果触发了某些事件，调用了函数，可以在函数中调用这个来创建对应的action并派发给store，让store在reducer中找到对应操作后更改数据：</p>
+<p>组件中：</p>
+<div class="hljs"><pre><code class="hljs javascript">&lt;input onChange = &#123;<span class="hljs-keyword">this</span>.handleInputChange.bind(<span class="hljs-keyword">this</span>)&#125;&gt;&lt;<span class="hljs-regexp">/input&gt;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">handleInputChange(e) &#123;</span>
+<span class="hljs-regexp">    const action = getInputChangeAction(e.target.value);</span>
+<span class="hljs-regexp">    store.dispatch(action);</span>
+<span class="hljs-regexp">&#125;</span></code></pre></div>
+
+<p>actionCreator:</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getInputChangeAction = <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> (&#123;
+    type: INPUT_VALUE_CHANGE,
+    value
+&#125;);</code></pre></div>
+
+<p>dispatch将以上action发回reducer中，reducer根据type进行操作：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> new_state = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(state)); <span class="hljs-comment">// 一个深拷贝</span>
+<span class="hljs-keyword">case</span> INPUT_VALUE_CHANGE: &#123;
+    new_state.inputValue = action.value;
+    <span class="hljs-keyword">return</span> new_state;
+&#125;</code></pre></div>
+
+<h3 id="异步获取初始数据"><a href="#异步获取初始数据" class="headerlink" title="异步获取初始数据"></a>异步获取初始数据</h3><p>异步获取初始数据，可以把获取数据的函数放在生命周期函数componentDidMount中：</p>
+<div class="hljs"><pre><code class="hljs javascript">componentDidMount() &#123;
+	axios.get(<span class="hljs-string">'./init_data_url'</span>).then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+		<span class="hljs-keyword">const</span> action = getInitDataAction(res.data);
+		dispatch(action);
+	&#125;);
+&#125;</code></pre></div>
+
+<p>使用redux-thunk，可以让dispatch接收一个函数而不是action，这样可以把axios的操作分离出去：</p>
+<div class="hljs"><pre><code class="hljs javascript">componentDidMount() &#123;
+    <span class="hljs-keyword">const</span> action = getTodoList();
+    store.dispatch(action);
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getTodoList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> &#123;
+        axios.get(<span class="hljs-string">'http://localhost:8000/test'</span>).then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+            <span class="hljs-keyword">const</span> action = getInitDataAction(res.data);
+            dispatch(action);
+        &#125;)
+    &#125;
+&#125;;</code></pre></div>
+
+<p>redux-thunk的安装过程：</p>
+<ul>
+<li><p>下载：</p>
+<div class="hljs"><pre><code class="hljs javascript">npm install redux-thunk --save</code></pre></div>
+</li>
+<li><p>使用</p>
+<p>首先，在创建store的地方，也就是store/index.js，引入applyMiddleware，再从redux-thunk中引入thunk:</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> reducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducer'</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>;
+
+<span class="hljs-keyword">const</span> store = createStore(reducer, applyMiddleware(thunk));
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store;</code></pre></div>
+
+<p>如果要继续使用dev工具：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createStore, applyMiddleware, compose &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> reducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducer'</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>;
+
+<span class="hljs-keyword">const</span> composeEnhancers = <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(&#123;&#125;) : compose;
+
+<span class="hljs-keyword">const</span> enhancer = composeEnhancers(
+    applyMiddleware(thunk),
+    <span class="hljs-comment">// other store enhancers if any</span>
+);
+
+<span class="hljs-keyword">const</span> store = createStore(reducer, enhancer);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store;</code></pre></div>
+
+</li>
+</ul>
+<h3 id="React-redux"><a href="#React-redux" class="headerlink" title="React-redux"></a>React-redux</h3><div class="hljs"><pre><code class="hljs javascript">npm install React-redux</code></pre></div>
+
+<p>在App.js中（就是最终渲染到root节点的大组件中），引入Provider：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; Provider &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+  render() &#123;
+    <span class="hljs-keyword">return</span> (
+      &lt;Fragment&gt;
+        &lt;GlobalIconStyled/&gt;
+        &lt;GlobalStyled/&gt;
+        &lt;Provider store=&#123;store&#125;&gt;
+            &lt;Header/&gt;
+        &lt;<span class="hljs-regexp">/Provider&gt;</span>
+<span class="hljs-regexp">      &lt;/</span>Fragment&gt;
+    );
+  &#125;
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;</code></pre></div>
+
+<p><code>&lt;GlobalIconStyled/&gt;</code>和<code>&lt;GlobalStyled/&gt;</code>这哥俩是全局样式和icon，<code>&lt;Provider store={store}&gt;</code>为它包裹的所有组件都提供了store，也就是里面的所有组件都能访问连接到这个store</p>
+<p>之后，在需要用到store的组件处连接store：下面是一个例子，主要需要引入connect，并在导出时连接组件</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> &#123; connect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> &#123; actionCreators &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Detail</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+    render() &#123;
+        <span class="hljs-keyword">const</span> &#123; title, content &#125; = <span class="hljs-keyword">this</span>.props;
+        <span class="hljs-keyword">return</span> (
+            &lt;DetailWrapper&gt;
+                &lt;Header&gt;&#123;title&#125;&lt;<span class="hljs-regexp">/Header&gt;</span>
+<span class="hljs-regexp">                &lt;Content dangerouslySetInnerHTML=&#123;&#123;__html: content&#125;&#125;&gt;&lt;/</span>Content&gt;
+            &lt;<span class="hljs-regexp">/DetailWrapper&gt;</span>
+<span class="hljs-regexp">        );</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp">    componentDidMount() &#123;</span>
+<span class="hljs-regexp">        this.props.changeDetail(this.props.match.params.id);</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp">&#125;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">const mapState = (state) =&gt; (&#123;</span>
+<span class="hljs-regexp">    title: state.getIn(['detail', 'title']),</span>
+<span class="hljs-regexp">    content: state.getIn(['detail', 'content'])</span>
+<span class="hljs-regexp">&#125;)</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">const mapDispatch = (dispatch) =&gt; (&#123;</span>
+<span class="hljs-regexp">    changeDetail(id) &#123;</span>
+<span class="hljs-regexp">        dispatch(actionCreators.changeDetail(id));</span>
+<span class="hljs-regexp">    &#125;</span>
+<span class="hljs-regexp">&#125;)</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">export default connect(mapState, mapDispatch)(withRouter(Detail));</span></code></pre></div>
+
+<p>连接必然有一个映射关系，而其中mapState，就是将store中的数据映射给组件的props，返回一个对象。mapDispatch的作用是将store的dispatch方法挂在props的函数上。</p>
+<p>实际上此时可以理解组件本身是一个UI组件，没有业务逻辑，而connect将一些逻辑与UI组件绑定在一起，返回了一个容器组件。</p>
+<h3 id="combineReducers"><a href="#combineReducers" class="headerlink" title="combineReducers"></a>combineReducers</h3><p>redux提供的，可以将不同组件的reducer分开写，避免代码太臃肿，在外部有一个store中的index创建store，之后它的reducer可以：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; combineReducers &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'immutable'</span>;
+<span class="hljs-keyword">import</span> &#123; reducer <span class="hljs-keyword">as</span> headerReducer &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../common/store'</span>;
+<span class="hljs-keyword">import</span> &#123; reducer <span class="hljs-keyword">as</span> homeReducer &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../pages/home/store'</span>;
+
+<span class="hljs-keyword">const</span> reducer = combineReducers(&#123;
+    header: headerReducer,
+    home: homeReducer
+&#125;);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> reducer;</code></pre></div>
+
+<h3 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h3><p>state是不能修改的，reducer中每次都要返回一个新的对象：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> new_state = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(state)); <span class="hljs-comment">// 一个深拷贝</span>
+<span class="hljs-keyword">case</span> INPUT_VALUE_CHANGE: &#123;
+    new_state.inputValue = action.value;
+    <span class="hljs-keyword">return</span> new_state;
+&#125;</code></pre></div>
+
+<p>而immutable对象是不可改变的，可以引入immutabe：</p>
+<div class="hljs"><pre><code class="hljs javascript">npm install immutable</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; fromJS &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'immutable'</span>;
+
+<span class="hljs-keyword">const</span> defaultState = fromJS(&#123;
+    focus: <span class="hljs-literal">false</span>
+&#125;);
+
+<span class="hljs-keyword">case</span> constants.ON_FOCUS:
+    <span class="hljs-keyword">return</span> state.set(<span class="hljs-string">'focus'</span>, <span class="hljs-literal">true</span>);
+    
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> (&#123;
+    focus: state.header.get(<span class="hljs-string">'focus'</span>)
+&#125;)</code></pre></div>
+
+<p>fromJS可以将普通对象变为一个immutable对象，之后获取对象需要get方法，而set方法与之前类似，是结合设置的值与原对象，返回一个新对象。</p>
+<h3 id="redux-immutable"><a href="#redux-immutable" class="headerlink" title="redux-immutable"></a>redux-immutable</h3><p>在上方代码可以发现，header是一个immutable对象，而state却不是。</p>
+<div class="hljs"><pre><code class="hljs javascript">npm install redux-immutable</code></pre></div>
+
+<p>之后在combineReducers的地方，也就是集合reducer的地方，通过redux-immutable引入combineReducers，这样结合后返回的reducer就是一个immutable对象了：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; combineReducers &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-immutable'</span>;
+<span class="hljs-keyword">import</span> &#123; reducer <span class="hljs-keyword">as</span> headerReducer &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../common/store'</span>;
+<span class="hljs-keyword">import</span> &#123; reducer <span class="hljs-keyword">as</span> homeReducer &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../pages/home/store'</span>;
+
+<span class="hljs-keyword">const</span> reducer = combineReducers(&#123;
+    header: headerReducer,
+    home: homeReducer
+&#125;);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> reducer;</code></pre></div>
+
+
+
+<h2 id="React路由"><a href="#React路由" class="headerlink" title="React路由"></a>React路由</h2><div class="hljs"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> react-router-dom</code></pre></div>
+
+<p>在渲染root的大组件中引入BrowserRouter, Route</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React, &#123; Component, Fragment &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> &#123; GlobalStyled &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./style.js'</span>;
+<span class="hljs-keyword">import</span> &#123; GlobalIconStyled &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./statics/iconfont/iconfont'</span>;
+<span class="hljs-keyword">import</span> Header <span class="hljs-keyword">from</span> <span class="hljs-string">'./common/header'</span>;
+<span class="hljs-keyword">import</span> &#123; Provider &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>;
+<span class="hljs-keyword">import</span> Home <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages/home'</span>;
+<span class="hljs-keyword">import</span> Detail <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages/detail/loadable'</span>;
+<span class="hljs-keyword">import</span> Login <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages/login'</span>;
+<span class="hljs-keyword">import</span> &#123; BrowserRouter, Route &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;
+  render() &#123;
+    <span class="hljs-keyword">return</span> (
+      &lt;Fragment&gt;
+        &lt;GlobalIconStyled/&gt;
+        &lt;GlobalStyled/&gt;
+        &lt;Provider store=&#123;store&#125;&gt;
+          &lt;BrowserRouter&gt;
+            &lt;Header/&gt;
+            &lt;Route path = <span class="hljs-string">'/'</span> exact component = &#123;Home&#125;&gt;&lt;<span class="hljs-regexp">/Route&gt;</span>
+<span class="hljs-regexp">            &lt;Route path = '/</span>detail<span class="hljs-string">' exact component = &#123;Detail&#125;&gt;&lt;/Route&gt;</span>
+<span class="hljs-string">            &lt;Route path = '</span>/login<span class="hljs-string">' exact component = &#123;Login&#125;&gt;&lt;/Route&gt;</span>
+<span class="hljs-string">          &lt;/BrowserRouter&gt;</span>
+<span class="hljs-string">        &lt;/Provider&gt;</span>
+<span class="hljs-string">      &lt;/Fragment&gt;</span>
+<span class="hljs-string">    );</span>
+<span class="hljs-string">  &#125;</span>
+<span class="hljs-string">&#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">export default App;</span></code></pre></div>
+
+<h3 id="path的匹配："><a href="#path的匹配：" class="headerlink" title="path的匹配："></a>path的匹配：</h3><p>/detail 实际上也可以对 / 匹配，而加入exact就限制只有路径完全相等时才显示。其中/:id表示后面跟随</p>
+<h3 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h3><p>用a标签实现的跳转，实际上浏览器又请求了一次html，而SPA实现只要一个html就够了：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; Link &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+&lt;Link key = &#123;item.get(<span class="hljs-string">'id'</span>)&#125; to = <span class="hljs-string">'/detail'</span>&gt;&lt;<span class="hljs-regexp">/Link&gt;</span></code></pre></div>
+
+<h3 id="路由参数传递"><a href="#路由参数传递" class="headerlink" title="路由参数传递"></a>路由参数传递</h3><h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><p>例如文章列表页面的跳转，后面加上一个id，表示点击的是第几条文章，注意route路径匹配也需要加上后缀</p>
+<div class="hljs"><pre><code class="hljs javascript">&lt;Link key = &#123;item.get(<span class="hljs-string">'id'</span>)&#125; to = &#123;<span class="hljs-string">'/detail'</span> + item.get(<span class="hljs-string">'id'</span>)&#125;&gt;&lt;<span class="hljs-regexp">/Link&gt;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">&lt;Route path = '/</span>detail/:id<span class="hljs-string">' exact component = &#123;Detail&#125;&gt;&lt;/Route&gt;</span></code></pre></div>
+
+<p>之后在文章的详情页面想要拿到这个id可以通过this.props.match.params.id拿到这个id，而详情页面的初始化就可以通过这个id去服务端请求到对应的文章：</p>
+<div class="hljs"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">'/api/detail.json?id='</span> + id).then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+    dispatch(actionDetail(res.data.data));
+&#125;)</code></pre></div>
+
+<h4 id="参数获取"><a href="#参数获取" class="headerlink" title="参数获取"></a>参数获取</h4><div class="hljs"><pre><code class="hljs javascript">&lt;Link key = &#123;item.get(<span class="hljs-string">'id'</span>)&#125; to = &#123;<span class="hljs-string">'/detail？id='</span> + item.get(<span class="hljs-string">'id'</span>)&#125;&gt;&lt;<span class="hljs-regexp">/Link&gt;</span>
+<span class="hljs-regexp"></span>
+<span class="hljs-regexp">/</span><span class="hljs-regexp">/ detail?id=1依然能匹配</span>
+<span class="hljs-regexp">&lt;Route path = '/</span>detail<span class="hljs-string">' exact component = &#123;Detail&#125;&gt;&lt;/Route&gt;</span></code></pre></div>
+
+<p>但此时获取id就在this.props.location.search中，是一个”?id=1”的字符串，想要获取需要手动解析一下</p>
+<h2 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h2><p>最终打包的bundle可能会很大，实际上只需要先获取首页的代码，之后如果需要显示详情，再加载详情页面的代码，这就需要异步组件，可以用react-loadable这个第三方库来实现:</p>
+<div class="hljs"><pre><code class="hljs javascript">npm install react-loadable</code></pre></div>
+
+<p>在详情页面下新建loadable.js文件：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> Loadable <span class="hljs-keyword">from</span> <span class="hljs-string">'react-loadable'</span>;
+<span class="hljs-keyword">import</span> &#123;Loading&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./style'</span>;
+
+<span class="hljs-keyword">const</span> LoadableComponent = Loadable(&#123;
+  loader: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">'./'</span>),
+  loading() &#123;
+      <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Loading</span>&gt;</span>正在加载<span class="hljs-tag">&lt;/<span class="hljs-name">Loading</span>&gt;</span></span>);
+  &#125;
+&#125;);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LoadableComponent</span>/&gt;</span></span>
+
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;
+  render() &#123;
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LoadableComponent</span>/&gt;</span></span>;
+  &#125;
+&#125;</code></pre></div>
+
+<p>其中，loader: () =&gt; import(‘./‘)是加载当前需要异步加载的组件，这里./是因为自动找index，而loading可以在加载这页面的时候临时显示一些内容（可以是一个组件，或是JSX写的东西啥的）</p>
+<p>至于最后的返回，其实一个无状态组件就可以了</p>
+<p>最后，在App组件下，路由项中加载detai时，也需要修改为加载这个loadable组件：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Detail <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages/detail/loadable'</span>;</code></pre></div>
+
+<p>而此时会发现，在上文中的this.props.match.params.id无法使用，因为现在Route加载的不是原来的组件，需要使用withRouter：</p>
+<h3 id="withRouter"><a href="#withRouter" class="headerlink" title="withRouter"></a>withRouter</h3><p>在detail的index下引入，并在connect连接导出时把detail这个组件放进去，含义是让这个组件可以获取到router中所有参数和内容</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; withRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+...
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapState, mapDispatch)(withRouter(Detail));</code></pre></div>
+
+<p>可以发现，此时浏览器会先加载bundle.js，在我们点击详情页之后，会再次加载一个chunk.js，这就是被抛离出来的详情页代码。</p>
+<h2 id="框架面试题"><a href="#框架面试题" class="headerlink" title="框架面试题"></a>框架面试题</h2><ul>
+<li><p>当你调用 setState 的时候，发生了什么事？</p>
+<p>首先，将传递给setState的对象合并到组件当前的状态，然后触发调和过程（Reconciliation）：先构建一颗新的元素树（UI的对象表示），与上一颗树进行比较（diff），了解到确切的变化后进行更新。</p>
+<blockquote>
+<p>虚拟DOM：用JS对象模拟的DOM，内存中的修改总比频繁改真实DOM开销小把？</p>
+<p>DIFF算法：比较两个虚拟DOM的差异，保证最小化真实DOM的操作</p>
+<p>分为<strong>tree diff、component diff</strong> 以及 <strong>element diff</strong> ：</p>
+<p>Tree diff：对同一层级（updateDepth）的DOM节点进行比较，如果发现节点已经不存在，就连着它下面的所有子节点都删掉。如果存在，那就属于component diff</p>
+<p>component diff：判断两节点是否是同一类型组件，如果不是，连同下面所有子节点一起替换（不再向下比较结构了），如果是同一类型，则按照原策略继续比较，当然，可以通过 shouldComponentUpdate() 控制该组件下面这些东西是否需要进行diff，因为可能同一类型的组件下面的VDOM根本没有变化</p>
+<p>element diff：对于同一层级的节点提供插入、移动、删除操作，而同一层级的节点看作集合的话，通过key的变化可以很快判断节点有哪些是新增的，那些被删除了，哪些是保留的只需要移动就可以。</p>
+</blockquote>
+<blockquote>
+<p>setState的时候如果两次state值没有发生变化,一定不会造成调用render吗？</p>
+<p>setState会调用render，除非shouldComponentUpdate()为false阻止render执行。</p>
+<p>但是render只会让两个虚拟DOM比较，由于值没有变化，真实的DOM不会重新渲染。</p>
+</blockquote>
+</li>
+<li><p>React项目脚手架？</p>
+<p>create-react-app 是官方的构建react单页面的脚手架工具</p>
+</li>
+<li><p>功能组件( Functional Component )与类组件( Class Component )如何选择？</p>
+<p>功能组件实际上就是无状态组件，接收props，渲染DOM，没有其他逻辑，而类组件是有状态组件，可以用this接收状态和属性，并且使用生命周期必须是类组件</p>
+</li>
+<li><p>react的优势？</p>
+<blockquote>
+<ul>
+<li><p>用虚拟DOM插在逻辑和真实DOM之间，性能好</p>
+</li>
+<li><p>跨浏览器兼容：虚拟DOM帮忙解决了跨浏览器问题，因为提供了标准化的api</p>
+</li>
+<li><p>单向数据流：Flux 是一个用于在 JavaScript 应用中创建单向数据层的架构，它随着 React 视图库的开发而被 Facebook 概念化</p>
+<p>往一个函数内传递一个对象参数，如果在这个函数里修改了这个对象，那么函数外的对象也是会随着改动的(因为本质是一个内存里的东西)。那么设想这样的情景：父组件的数据通过props传递给子组件，而子组件里更新了props，导致父组件更新——毫无疑问，这是会 导致数据紊乱的、不可控的操作。并且，数据的流向只能通过props由外层到内层 一层一层往里传递。</p>
+<p>所以react规定对组件而言它的props是只读的。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>React 很多个 setState 为什么是执行完再 render</p>
+<p>首先明确一点，setState是同步执行的，但state不一定会同步更新，可以理解为将需要更新的state合并后放入状态队列，之后批量更新。</p>
+</li>
+<li><p>react生命周期</p>
+<p>先谈谈老版的生命周期：包含三个过程，挂载、更新、卸载如下</p>
+<blockquote>
+<p><strong>挂载过程</strong></p>
+<p>constructor：包括getDefaultProps、getInitialState，完成数据的初始化</p>
+<p>componentWillMount：组件完成初始化数据，但还未渲染DOM时候实行（可以做服务端渲染），一个生命周期只执行这一次，此时可以修改state（axios获取数据）</p>
+<p>render：创建虚拟DOM，DIFF算法比对之后渲染节点</p>
+<p>componentDidMount：组件第一次渲染完成，此时DOM节点生成了</p>
+<p><strong>更新过程</strong></p>
+<p>componentWillReceiveProps(nextProps)：初始化时不调用，只有接收新的props时调用</p>
+<p>shouldComponentUpdate(nextProps, nextState)：state改变或接收了新的props（也就是在componentWillReceiveProps）之后调用，可以设置在此对比前后两个props和state是否相同，如果相同则返回false阻止更新，因为相同的属性状态一定会生成相同的dom树，这样就不需要创造新的dom树和旧的dom树进行diff算法对比，节省大量性能，尤其是在dom结构复杂的时候。</p>
+<p>componentWillUpdata(nextProps, nextState)：组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state</p>
+<p>render：。。。</p>
+<p>componentDidUpdate：组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点</p>
+<p><strong>卸载过程</strong></p>
+<p>componentWillUnmount：组件的卸载前执行的逻辑，比如进行“清除组件中所有的setTimeout、setInterval等计时器”或“移除所有组件中的监听器removeEventListener”等操作。</p>
+</blockquote>
+<p>新的生命周期中，使用getDerivedStateFromProps代替了旧的componentWillMount及componentWillReceiveProps，getSnapshotBeforeUpdate代替了旧的componentWillUpdate：</p>
+<blockquote>
+<p><strong>getDerivedStateFromProps(nextProps, nextState)</strong></p>
+<p>一个静态方法, 是一个和组件自身”不相关”的角色. 在这个静态方法中, 除了两个默认的位置参数 nextProps 和 currentState 以外, 你无法访问任何组件上的数据</p>
+<p>旧的React中componentWillReceiveProps方法是用来判断前后两个 props 是否相同，如果不同，则将新的 props 更新到相应的 state 上去。在这个过程中我们实际上是可以访问到当前props的，这样我们可能会对this.props做一些奇奇怪怪的操作，很可能会破坏 state 数据的单一数据源，导致组件状态变得不可预测。</p>
+<p>而在 getDerivedStateFromProps 中禁止了组件去访问 this.props，强制让开发者去比较 nextProps 与 prevState 中的值，以确保当开发者用到 getDerivedStateFromProps 这个生命周期函数时，就是在根据当前的 props 来更新组件的 state，而不是去访问this.props并做其他一些让组件自身状态变得更加不可预测的事情。</p>
+<p>返回一个对象，来更新state，返回null则不更新任何内容</p>
+<p><strong>getSnapshotBeforeUpdate(prevProps, prevState)</strong></p>
+<p>记录了更新DOM之前的一些属性，返回的值，会被componentDidUpdate的第三个参数接收。</p>
+</blockquote>
+</li>
+<li><p>setState和replaceState的区别</p>
+<p>setState 是修改其中的部分状态，相当于 Object. assign，只是覆盖，不会减少原来的状态。</p>
+<p>replaceState 是完全替换原来的状态，相当于赋值，将原来的 state 替换为另一个对象，如果新状态属性减少，那么 state 中就没有这个状态了。</p>
+</li>
+<li><p>了解 redux 么，说一下 redux 吧</p>
+<p>为什么用redux？在React中，数据在组件中是单向流动的，数据从一个方向父组件流向子组件（通过props）, 所以，两个非父子组件之间通信就相对麻烦，redux的出现就是为了解决state里面的数据问题</p>
+<p>redux设计理念：Redux是将整个应用状态存储到一个地方上称为store, 里面保存着一个状态树store tree, 组件可以派发(dispatch)行为(action)给store, 而不是直接通知其他组件，组件内部通过订阅store中的状态state来刷新自己的视图。</p>
+</li>
+<li><p>在哪个生命周期发起Ajax请求？</p>
+<p>应该在 componentDidMount 中发起网络请求。这个方法会在组件第一次“挂载”(被添加到 DOM)时执行，在组件的生命周期中仅会执行一次。更重要的是，你不能保证在组件挂载之前 Ajax 请求已经完成，如果是这样，也就意味着你将尝试在一个未挂载的组件上调用 setState，这将不起作用。在 componentDidMount 中发起网络请求将保证这有一个组件可以更新了。</p>
+</li>
+<li><p>(在构造函数中)调用 super(props) 的目的是什么？</p>
+<p>首先，super被调用前，子类无法使用this，并且ES2015规定子类必须在constructor中调用super方法。而传递props给super是为了能在constructor中访问this.props</p>
+</li>
+<li><p>何为受控组件(controlled component)</p>
+<p>比如input，正常的html中我们输入东西，页面是正常显示的，但react中作为组件如果没绑定state中的值就不会显示，被react控制的元素就是受控元素</p>
+</li>
+<li><p>啥是高阶组件？</p>
+<p>以一个组件为参数并返回一个新组件的函数，比如connect一个UI组件，让他变成了容器组件</p>
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/">前端八股文</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/">前端面试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/26/HTTP%E5%90%84%E7%89%88%E6%9C%AC%E4%B8%8EHTTPS/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTTP各版本与HTTPS</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/22/%E5%85%B3%E4%BA%8ECSS%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E7%BB%8F%E5%85%B8%E5%B8%83%E5%B1%80/">
+                        <span class="hidden-mobile">关于CSS预处理与经典布局</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "React基础与一些问题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "❡"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

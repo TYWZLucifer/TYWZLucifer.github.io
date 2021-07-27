@@ -152,7 +152,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.1k 字
+      5.1k 字
     </span>
   
 
@@ -162,7 +162,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      54
+      67
        分钟
     </span>
   
@@ -194,7 +194,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 21, 2021 pm
+                  本文最后更新于：July 27, 2021 pm
                 
               </p>
             
@@ -472,6 +472,124 @@ x.set(<span class="hljs-string">'a'</span>,<span class="hljs-number">100</span>)
     <span class="hljs-comment">// work with data2</span>
     <span class="hljs-keyword">return</span> getdata(...)
 &#125;).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">Error</span>(err));</code></pre></div>
+
+<p>手写一个promise可以更好的理解这玩意：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 三种状态</span>
+<span class="hljs-keyword">const</span> PENDING = <span class="hljs-string">'pending'</span>;
+<span class="hljs-keyword">const</span> RESOLVE = <span class="hljs-string">'resolve'</span>;
+<span class="hljs-keyword">const</span> REJECT = <span class="hljs-string">'REJECT'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPromise</span> </span>&#123;
+    <span class="hljs-keyword">constructor</span>(executer) &#123;  <span class="hljs-comment">// promise需要传入一个函数，并且这个函数立即执行</span>
+        <span class="hljs-keyword">this</span>.state = PENDING; <span class="hljs-comment">// 将初始状态设置为pending</span>
+        <span class="hljs-keyword">this</span>.value = <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// 成功值</span>
+        <span class="hljs-keyword">this</span>.reason = <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// 失败原因</span>
+        <span class="hljs-keyword">this</span>.onResolveCallbacks = []; <span class="hljs-comment">// 成功后回调then中的成功函数</span>
+        <span class="hljs-keyword">this</span>.onRejectCallbacks = []; <span class="hljs-comment">// 拒绝后回调then中的拒绝函数</span>
+        <span class="hljs-keyword">try</span>&#123;
+            executer(<span class="hljs-keyword">this</span>.resolve.bind(<span class="hljs-keyword">this</span>), <span class="hljs-keyword">this</span>.reject.bind(<span class="hljs-keyword">this</span>)); <span class="hljs-comment">//  注意resolve和reject虽然都是作为executer参数传入的但实际上实现是由promise内部完成的</span>
+        &#125; <span class="hljs-keyword">catch</span>(err) &#123;                                                 <span class="hljs-comment">// 但实际上实现是由promise内部完成的</span>
+            reject(err);
+        &#125;
+    &#125;
+
+    resolve(value) &#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state === PENDING) <span class="hljs-keyword">this</span>.state = RESOLVE; <span class="hljs-comment">// 成功resolve后改变状态</span>
+        <span class="hljs-keyword">this</span>.value = value; <span class="hljs-comment">// 将传入的value储存</span>
+        <span class="hljs-keyword">this</span>.onResolveCallbacks.forEach(<span class="hljs-function"><span class="hljs-params">onResolve</span> =&gt;</span> onResolve(<span class="hljs-keyword">this</span>.value)); <span class="hljs-comment">// 对数组中存放的每一个函数，由于状态改变，要一一执行</span>
+    &#125;
+
+    reject(reason) &#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state === PENDING) <span class="hljs-keyword">this</span>.state = REJECT; <span class="hljs-comment">// 与上相同，改变状态</span>
+        <span class="hljs-keyword">this</span>.reason = reason; <span class="hljs-comment">// 存储失败原因</span>
+        <span class="hljs-keyword">this</span>.onRejectCallbacks.forEach(<span class="hljs-function"><span class="hljs-params">onReject</span> =&gt;</span> onReject(<span class="hljs-keyword">this</span>.reason)); <span class="hljs-comment">// 和上方一样，订阅发布罢了</span>
+    &#125;;
+
+    then(onResolve, onReject) &#123; <span class="hljs-comment">// 每个promise都有then，传入两个函数作为参数，分别处理成功和失败的值</span>
+        <span class="hljs-comment">// onResolve是否是函数，不是函数的话就自己定义为直接传值的函数</span>
+        onResolve = <span class="hljs-keyword">typeof</span> onResolve === <span class="hljs-string">'function'</span> ? onResolve : <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value;
+        <span class="hljs-comment">// 如果onReject不是函数，就直接把错抛出来，以上两行是为了promise.then()这种传入为空的情况</span>
+        onReject = <span class="hljs-keyword">typeof</span> onReject === <span class="hljs-string">'function'</span> ? onReject: <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123; <span class="hljs-keyword">throw</span> err &#125;;
+        <span class="hljs-keyword">let</span> promise2 = <span class="hljs-keyword">new</span> MyPromise(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state === RESOLVE) &#123;
+                <span class="hljs-comment">// 规范规定then中的onResolve, onReject都不能被同步调用，必须是异步调用，不然无法确定then中的代码与外部同步代码的执行顺序</span>
+                <span class="hljs-comment">// 同时，假设不是异步，同步的话promise还未创建完成，在resolvePromise中就无法判断x与promise2的关系</span>
+                setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                    <span class="hljs-keyword">try</span> &#123;
+                        <span class="hljs-keyword">let</span> x = onResolve(<span class="hljs-keyword">this</span>.value);
+                        resolvePromise(promise2, x, resolve, reject);
+                    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+                        reject(e);
+                    &#125;
+                &#125;, <span class="hljs-number">0</span>);
+            &#125;
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state === REJECT) &#123;
+                setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                    <span class="hljs-keyword">try</span> &#123;
+                        <span class="hljs-keyword">let</span> x = onReject(<span class="hljs-keyword">this</span>.reason);
+                        resolvePromise(promise2, x, resolve, reject);
+                    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+                        reject(e);
+                    &#125;
+                &#125;, <span class="hljs-number">0</span>);
+            &#125;
+            <span class="hljs-comment">// 如果resolve或reject被放在一个setTimeout中，用then的时候状态还未更改，则需要用一个数组保存需要执行的函数</span>
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.state === PENDING) &#123;
+                <span class="hljs-keyword">this</span>.onResolveCallbacks.push(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                        <span class="hljs-keyword">try</span> &#123;
+                            <span class="hljs-keyword">let</span> x = onResolve(<span class="hljs-keyword">this</span>.value);
+                            resolvePromise(promise2, x, resolve, reject);
+                        &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+                            reject(e);
+                        &#125;
+                    &#125;, <span class="hljs-number">0</span>);
+                &#125;);
+                <span class="hljs-keyword">this</span>.onRejectCallbacks.push(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                        <span class="hljs-keyword">try</span> &#123;
+                            <span class="hljs-keyword">let</span> x = onReject(<span class="hljs-keyword">this</span>.reason);
+                            resolvePromise(promise2, x, resolve, reject);
+                        &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+                            reject(e);
+                        &#125;
+                    &#125;, <span class="hljs-number">0</span>);
+                &#125;);
+            &#125;
+        &#125;);
+
+        <span class="hljs-keyword">return</span> promise2;
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolvePromise</span>(<span class="hljs-params">promise2, x, resolve, reject</span>) </span>&#123;
+    <span class="hljs-keyword">if</span>(x === promise2) <span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">'循环promise了'</span>));
+    <span class="hljs-keyword">let</span> called; <span class="hljs-comment">// 假如x被创建成了一个带有then方法的很奇怪的东西，能同时或多次调用resolve/reject，这显然是不被规范允许的</span>
+    <span class="hljs-keyword">if</span>(x &amp;&amp; (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">'object'</span> || <span class="hljs-keyword">typeof</span> x === <span class="hljs-string">'function'</span>)) &#123; <span class="hljs-comment">// x不是null并且，x是一个对象或者函数时候，去找x的then方法</span>
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">let</span> then = x.then; <span class="hljs-comment">// 避免有人使坏，then只能调用一次。。</span>
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> then === <span class="hljs-string">'function'</span>) &#123; <span class="hljs-comment">// 如果then是一个函数，就默认x是一个promise，如果没找到then，把x当作普通值处理</span>
+                then.call(x, y =&gt; &#123; <span class="hljs-comment">// y是x在resolve后的结果，可能还是一个promise</span>
+                    <span class="hljs-keyword">if</span>(called) <span class="hljs-keyword">return</span>;
+                    called = <span class="hljs-literal">true</span>;
+                    resolvePromise(promise2, y, resolve, reject); <span class="hljs-comment">// 如果x的resolve依然是promise对象，就递归解析，知道x成为一个普通值</span>
+                &#125;, err =&gt; &#123;
+                    <span class="hljs-keyword">if</span>(called) <span class="hljs-keyword">return</span>;
+                    called = <span class="hljs-literal">true</span>;
+                    reject(err);
+                &#125;)
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                resolve(x);
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+            <span class="hljs-keyword">if</span>(called) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 合理的解释是规范要求，then抛出了异常，但y=&gt;&#123;&#125;和err=&gt;&#123;&#125;已被调用，就要忽略这玩意</span>
+            called = <span class="hljs-literal">true</span>;     
+            reject(e);
+        &#125;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        resolve(x); <span class="hljs-comment">// 现在x只是一个普通值</span>
+    &#125;
+&#125;</code></pre></div>
 
 
 
