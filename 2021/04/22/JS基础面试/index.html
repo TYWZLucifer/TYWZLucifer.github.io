@@ -152,7 +152,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      5.7k 字
     </span>
   
 
@@ -162,7 +162,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      67
+      75
        分钟
     </span>
   
@@ -194,7 +194,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 30, 2021 am
+                  本文最后更新于：August 3, 2021 pm
                 
               </p>
             
@@ -591,8 +591,61 @@ x.set(<span class="hljs-string">'a'</span>,<span class="hljs-number">100</span>)
     &#125;
 &#125;</code></pre></div>
 
+<h3 id="ES7-async-amp-await"><a href="#ES7-async-amp-await" class="headerlink" title="ES7 async&amp;await"></a>ES7 async&amp;await</h3><p>async实际上是ES6中Generator函数的语法糖，Generator函数是一个状态机，封装了多个内部状态，执行G函数会返回一个遍历器对象，可以用来遍历这些状态，只有调用next方法时才会遍历下一个状态，而这就提供了一种暂停函数执行的功能，yield表达式就是暂停标志</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">'hello'</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-string">'world'</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'end'</span>;
+&#125;
 
+<span class="hljs-keyword">let</span> f = fn();
+<span class="hljs-built_in">console</span>.log(f.next());
+<span class="hljs-built_in">console</span>.log(f.next());
+<span class="hljs-comment">// console.log(f.next());</span>
 
+<span class="hljs-comment">// 输出</span>
+<span class="hljs-number">1</span>
+&#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'hello'</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span> &#125;
+<span class="hljs-number">2</span>
+&#123; <span class="hljs-attr">value</span>: <span class="hljs-string">'world'</span>, <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span> &#125;</code></pre></div>
+
+<p>f = fn()后，只要没有next，fn就不会执行，哪怕前面并没有yield语句，每次next都会执行到一个yield或return为止。函数可以暂停，也可以恢复执行。每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield表达式后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
+<p>而async和await实际上是让G函数自动执行，这样写出来的看着是同步，实则是异步代码了。根据 MDN 定义，async 是一个通过异步执行并隐式返回 Promise 作为结果的函数。假设yield的是一个promise对象，可以手写一个简单的自动执行器：</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">gen</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> g = gen();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">next</span>(<span class="hljs-params">data</span>) </span>&#123;
+        <span class="hljs-keyword">let</span> res = g.next(data);
+        <span class="hljs-keyword">if</span>(res.done) <span class="hljs-keyword">return</span> res.value;
+        <span class="hljs-keyword">else</span> res.value.then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;
+            next(data);
+        &#125;)
+    &#125;
+    next();
+&#125;
+
+<span class="hljs-comment">// 使用</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> response1 = <span class="hljs-keyword">yield</span> fetch(<span class="hljs-string">'https://xxx'</span>) <span class="hljs-comment">//返回promise对象</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'response1'</span>)
+    <span class="hljs-built_in">console</span>.log(response1)
+    <span class="hljs-keyword">let</span> response2 = <span class="hljs-keyword">yield</span> fetch(<span class="hljs-string">'https://xxx'</span>) <span class="hljs-comment">//返回promise对象</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'response2'</span>)
+    <span class="hljs-built_in">console</span>.log(response2)
+&#125;
+run(foo);</code></pre></div>
+
+<p>比较就会发现，async函数就是将 Generator 函数的星号（*）替换成async，将yield替换成await，仅此而已。async函数对 Generator 函数的改进，体现在以下四点：</p>
+<blockquote>
+<ul>
+<li>内置执行器。Generator 函数的执行必须依靠执行器，而 async 函数自带执行器，无需手动执行 next() 方法。</li>
+<li>更好的语义。async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果。</li>
+<li>更广的适用性。co模块约定，yield命令后面只能是 Thunk 函数或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</li>
+<li>返回值是 Promise。async 函数返回值是 Promise 对象，比 Generator 函数返回的 Iterator 对象方便，可以直接使用 then() 方法进行调用。</li>
+</ul>
+</blockquote>
 <h2 id="JS-Web-API"><a href="#JS-Web-API" class="headerlink" title="JS Web API"></a>JS Web API</h2><h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>DOM的本质：是HTML文本解析出的一棵树</p>
 <p>DOM的节点操作：</p>
 <ul>
