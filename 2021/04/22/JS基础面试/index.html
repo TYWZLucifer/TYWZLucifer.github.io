@@ -152,7 +152,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.7k 字
+      6k 字
     </span>
   
 
@@ -162,7 +162,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      75
+      79
        分钟
     </span>
   
@@ -194,7 +194,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 3, 2021 pm
+                  本文最后更新于：August 4, 2021 pm
                 
               </p>
             
@@ -644,6 +644,59 @@ run(foo);</code></pre></div>
 <li>更好的语义。async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果。</li>
 <li>更广的适用性。co模块约定，yield命令后面只能是 Thunk 函数或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</li>
 <li>返回值是 Promise。async 函数返回值是 Promise 对象，比 Generator 函数返回的 Iterator 对象方便，可以直接使用 then() 方法进行调用。</li>
+</ul>
+</blockquote>
+<p>await只有在async函数中才能使用，事实上await后面的东西可以理解为promise的executer，而await下面的代码则是promise的then，而await之后可以分两种情况：</p>
+<blockquote>
+<ul>
+<li><p>如果后面跟的是一个普通值，就相当于executer直接执行完了，把之后的代码作为then注册到微任务，然后执行当前宏任务的同步代码即可</p>
+</li>
+<li><p>如果后面跟了一个异步代码，比如是一个async函数返回的promise，事实上还是先立即执行promise中的executer，之后如果这个promise有then的话，就将这个then注册到微任务，然后执行当前宏任务的同步代码，之后再去微任务队列中执行这个then，执行之后才把await之后的代码作为then的then注册进微任务。</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script start'</span>)
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">await</span> async2()
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'async1 end'</span>)
+&#125;
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'async2 end'</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"async2 pro"</span>);
+    resolve();
+  &#125;)
+&#125;
+
+async1()
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'setTimeout'</span>)
+&#125;, <span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Promise'</span>)
+  resolve()
+&#125;)
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise1'</span>)
+&#125;)
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise2'</span>)
+&#125;)
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script end'</span>)
+
+<span class="hljs-comment">//</span>
+script start
+async2 end
+async2 pro
+<span class="hljs-built_in">Promise</span>
+script end
+promise1
+promise2
+async1 end
+setTimeout</code></pre></div>
+</li>
 </ul>
 </blockquote>
 <h2 id="JS-Web-API"><a href="#JS-Web-API" class="headerlink" title="JS Web API"></a>JS Web API</h2><h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>DOM的本质：是HTML文本解析出的一棵树</p>
