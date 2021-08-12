@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>浏览器存储与网页通信</title>
+    <link href="/2021/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8%E4%B8%8E%E7%BD%91%E9%A1%B5%E9%80%9A%E4%BF%A1/"/>
+    <url>/2021/08/11/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8%E4%B8%8E%E7%BD%91%E9%A1%B5%E9%80%9A%E4%BF%A1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="浏览器存储与页面通信"><a href="#浏览器存储与页面通信" class="headerlink" title="浏览器存储与页面通信"></a>浏览器存储与页面通信</h1><p>昨天面TME，连着两场面试，二面面试官出了这样一道场景题：一个页面有很多歌曲，放在一个列表里，点击某一首歌曲后在新标签页中播放歌曲，以及显示这首歌的详细内容，如果在列表页点击了另一首歌，那么播放页的歌曲需要替换为新歌曲，怎么做？</p><h2 id="列表页组成"><a href="#列表页组成" class="headerlink" title="列表页组成"></a>列表页组成</h2><p>首先思考如何完成音乐列表，可以给一个ul，用户下滑到底端就ajax获取新的数据，然后创建新的li放进ul中。</p><p>这个动作需要一个监听：window.onscoll，监听到滚动后看滚动的距离加上窗口高是否已经与body高度一样，如果高度一样了，就发请求加载数据。</p><p>第二，对每一个列表项的事件绑定，优化肯定是需要事件代理的，那么每一首歌的真实链接如何获取呢？，可以使用HTML5的data属性自定义一个：</p><div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myLinks"</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"go"</span> <span class="hljs-attr">data-tsrc</span>=<span class="hljs-string">"11111"</span>&gt;</span>Go somewhere<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"do"</span> <span class="hljs-attr">data-tsrc</span>=<span class="hljs-string">"22222"</span>&gt;</span>Do something<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"say"</span> <span class="hljs-attr">data-tsrc</span>=<span class="hljs-string">"33333"</span>&gt;</span>Say hello<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">    <span class="hljs-keyword">var</span> myLinks = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myLinks'</span>);</span><span class="actionscript">    myLinks.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span></span>&#123;</span><span class="actionscript">        <span class="hljs-keyword">if</span>(event.target.nodeName.toLowerCase() === <span class="hljs-string">'li'</span>)&#123;</span><span class="javascript">            <span class="hljs-built_in">console</span>.log(event.target.dataset.tsrc);</span>        &#125;    &#125; <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div><p>在onclick中可以用window.open打开一个新页面，妈的我答的居然是getpost我他妈当时在想什么啊。。</p><blockquote><p>浏览器跳转页面的本质：是浏览器对象窗口location(url)的改变</p><p>而window.location.href是window对象的属性，而window.open则是window对象的方法</p><p>location.href = url 与 location.replace(url)的区别是，前者会在history中增加记录，后者会将history的当前记录替换</p><p>而这些方式本质都用的是get方法，post一般都是提交form</p></blockquote><p>新建好页面，也就是播放页后，音乐啥的就可以正常播放了，下面就可以考虑第二个问题，如何做这两个页面的信息同步（音乐切换）</p><p>当然，列表页中列表项的制作也可以用a标签来做，通常点击a会刷新所在页面（与更改location.href一样），加上target=”_blank”可以控制打开新页面</p><h2 id="页面通信"><a href="#页面通信" class="headerlink" title="页面通信"></a>页面通信</h2><h3 id="window-open"><a href="#window-open" class="headerlink" title="window open"></a>window open</h3><p>在上一节中使用window.open打开页面，可以在本页面记录打开的页面的一个索引，而打开的页面也可以通过window.opener找到打开它的父页面，之后使用postmessage就可以完成通信：</p><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span>(!wchild) wchild = <span class="hljs-built_in">window</span>.open(<span class="hljs-string">'http://127.0.0.1:5500/test.html'</span>);<span class="hljs-keyword">if</span>(wchild.closed) wchild = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 检查子页面有没有关掉</span><span class="hljs-keyword">else</span> wchild.postMessage(fatherdata);<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>, (e) =&gt; &#123;    <span class="hljs-built_in">console</span>.log(e); <span class="hljs-comment">// e.data === sondata</span>&#125;)</code></pre></div><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>, (e) =&gt; &#123;    <span class="hljs-built_in">console</span>.log(e); <span class="hljs-comment">// e.data === fatherdata</span>    <span class="hljs-built_in">window</span>.opener.postMessage(sondata);&#125;)</code></pre></div><p>这样，几个需求的解决方式就明确了：</p><p>点击新歌曲后播放页要切换：将新歌的url发到播放页，之后替换播放页的location.href</p><p>点击新歌后如果播放页关掉了怎么办？ open之前检查下索引closed是否为真，真关了就新建一个</p><h2 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h2><p>在回答过程中我思考用本地存储来做共享内存池，涉及localStorage和sessionStorage的一些区别：</p><p>localStorage：本地磁盘永久存储，除非用户主动清除。</p><p>sessionStorage：当前窗口标签页，如果这个窗口关了，那存放的数据也没了，因为它实际上是放在内存中的。</p><p>首先，不同浏览器无法共享LS和SS的中的数据，而相同浏览器的不同页面可以共享LS（前提是这些页面符合同源策略），而SS只有自己这个标签页能看，当然它刷新后依然有效。</p><p>用localStorage做通信，可以利用Storage事件，就是当LS发生变化时触发的事件，然后在需要监听消息的页面通过：</p><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'storage'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;    <span class="hljs-keyword">if</span> (e.key === <span class="hljs-string">'fathermsg'</span>) &#123;        <span class="hljs-built_in">console</span>.log(e);    &#125;&#125;);</code></pre></div><p>页面正常关闭时，会先执行 <code>window.onbeforeunload</code> ，然后执行 <code>window.onunload</code>可以在播放页关掉之前需要更改LS中关于播放页是否存在，是否需要新建的变量。</p><p>但是页面崩溃该怎么办呢？那就需要Service Worker</p><h2 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h2><p>先准备其他东西了，，有空再写。。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Web</tag>
+      
+      <tag>网页存储</tag>
+      
+      <tag>页面通信</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>一些手写JS题目</title>
     <link href="/2021/07/25/32%E4%B8%AA%E6%89%8B%E5%86%99JS%E9%A2%98%E7%9B%AE/"/>
     <url>/2021/07/25/32%E4%B8%AA%E6%89%8B%E5%86%99JS%E9%A2%98%E7%9B%AE/</url>
